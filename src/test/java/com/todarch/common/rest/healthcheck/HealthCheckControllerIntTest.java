@@ -1,6 +1,7 @@
 package com.todarch.common.rest.healthcheck;
 
 import com.todarch.common.rest.Endpoints;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,13 @@ public class HealthCheckControllerIntTest {
   @Autowired
   private MockMvc mockMvc;
 
+  private static final String SPRING_APPLICATION_NAME = "co";
+
   @Test
   public void shouldHaveUpEndpoint() throws Exception {
     mockMvc.perform(get(Endpoints.UP))
-        .andExpect(status().isOk());
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$").value(Matchers.containsString(SPRING_APPLICATION_NAME)));
   }
 
   @Test
