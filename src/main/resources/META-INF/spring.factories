@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.todarch.common.rest.error.RestErrorControllerAutoConfiguration,\
 com.todarch.common.rest.healthcheck.HealthCheckAutoConfiguration
